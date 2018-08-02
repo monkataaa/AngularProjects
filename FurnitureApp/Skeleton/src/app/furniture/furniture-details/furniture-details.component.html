@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row space-top">
+      <div class="col-md-12">
+          <h1>Furniture Details</h1>
+      </div>
+  </div>
+  <div *ngIf="furniture | async as f" class="row space-top">
+      <div class="col-md-4">
+          <div class="card text-white bg-primary">
+              <div class="card-body">
+                  <blockquote class="card-blockquote">
+                      <img src="{{f.image}}" />
+                  </blockquote>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <p>Make: {{f.make}}</p>
+          <p>Model: model</p>
+          <p>Year: year</p>
+          <p>Description: {{f.description}}</p>
+          <p>Price: price</p>
+          <p>Material: material</p>
+      </div>
+  </div>
+</div>
