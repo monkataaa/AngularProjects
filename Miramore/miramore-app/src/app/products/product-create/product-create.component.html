@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form #f="ngForm" (ngSubmit)="create()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              required
+              type="text"
+              id="name"
+              name="name"
+              [(ngModel)]="bindingModel.name"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <input
+              required
+              type="text"
+              id="category"
+              name="category"
+              [(ngModel)]="bindingModel.category"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input
+              required
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              [(ngModel)]="bindingModel.imageUrl"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img src="{{bindingModel.imageUrl}}" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input
+              required
+              type="number"
+              id="price"
+              name="price"
+              [(ngModel)]="bindingModel.price"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+     <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Create</button>
+    </form>
+  </div>
+</div>

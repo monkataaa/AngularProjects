@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth-service';
+import { OrderService } from '../orders/order-service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,9 @@ import { AuthService } from '../auth/auth-service';
 export class HeaderComponent implements OnInit {
   dropdownLi : string = "nav-item dropdown";
   dropdownMenu : string = "dropdown-menu";
-  constructor(private authService : AuthService) { }
+  constructor(
+    private authService : AuthService,
+    private orderService : OrderService) { }
 
   ngOnInit() {
   }
@@ -25,7 +28,14 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    console.log("natisnah Logout");
     this.authService.logout()
+  }
+
+  myCredantials(){
+    this.orderService.getMyOrder()
+      .subscribe(data => {
+        console.log('all orders =',data);
+      })
+    
   }
 }

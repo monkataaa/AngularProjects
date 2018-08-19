@@ -15,7 +15,9 @@ export class LoginComponent implements OnInit {
     this.model = new SignInModel("", "");
   }
 
+  userId : string
   ngOnInit() {
+     
   }
 
   signIn() {
