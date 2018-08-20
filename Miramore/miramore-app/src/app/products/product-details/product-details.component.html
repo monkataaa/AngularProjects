@@ -16,9 +16,9 @@
   <div class="row">
     <div class="col-xs-12">
         <ul>
-            <li><a style="cursor: pointer;" routerLink="/product/edit/{{id}}">Edit product</a></li>
-            <li><a style="cursor: pointer;" (click)="delete()">Delete product</a></li>
-            <li><a style="cursor: pointer;" (click)="purchase()">Purchase product</a></li>
+            <li *ngIf="authService.isAdmin()"  ><a style="cursor: pointer;" routerLink="/product/edit/{{id}}">Edit product</a></li>
+            <li *ngIf="authService.isAdmin()"  ><a style="cursor: pointer;" (click)="delete()">Delete product</a></li>
+            <li  *ngIf="!authService.isAdmin()"  ><a  style="cursor: pointer;" (click)="purchase()">Purchase product</a></li>
         </ul>
     </div>
   </div>

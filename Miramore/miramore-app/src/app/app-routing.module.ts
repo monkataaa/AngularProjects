@@ -9,6 +9,7 @@ import { ProductCreateComponent } from './products/product-create/product-create
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { OrderProductsComponent } from './orders/order-products/order-products.component';
+import { AdminGuard } from './products/admin.guard';
 // import { AuthGuard } from './auth/auth.guard';
 // import { RecipeModule } from './recipe/recipe.module';
 
@@ -21,9 +22,9 @@ const routes : Route[] = [
     path: 'catalog', component : CatalogComponent
   },
   { path: 'product', children: [
-   {   path : "details/:id", component : ProductDetailsComponent } ,
-   {   path : "create", component : ProductCreateComponent } ,
-   {   path : "edit/:id", component : ProductEditComponent } ,
+   {   path : "details/:id", component : ProductDetailsComponent,  } ,
+   {   path : "create", component : ProductCreateComponent, canActivate: [AdminGuard] }, 
+   {   path : "edit/:id", component : ProductEditComponent, canActivate: [AdminGuard] } ,
    {   path : "list", component : ProductListComponent } ,
   ], 
      canActivate: [AuthGuard] 
@@ -32,7 +33,7 @@ const routes : Route[] = [
     {path: 'myOrder', component : OrderProductsComponent}
   ]},
   {
-    path: '**', redirectTo: '/catalog'
+    path: '**', redirectTo: '/auth/list'
   }
 ]
 

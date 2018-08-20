@@ -82,6 +82,13 @@ export class AuthService {
         return this.userEmail = firebase.auth().currentUser.email
     }
 
+    isAdmin(){
+        if (this.user['email'] == "moni@abv.bg") {
+            return true
+        }
+        return false
+    }
+
     getMyCredentials(){
         console.log('pokazvam emaila', this.user['email']);
         console.log('this.initialOrderId = ',this.initialOrderId);
