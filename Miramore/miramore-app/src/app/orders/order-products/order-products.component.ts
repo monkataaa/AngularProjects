@@ -26,7 +26,6 @@ export class OrderProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('productite sa ', this.products.length);
      this.orderService.getMyOrder()
       .subscribe(data => {
         if (data['productIds']) {
@@ -34,7 +33,6 @@ export class OrderProductsComponent implements OnInit {
             this.productService.getById(id)
             .subscribe(productInfo => {
               this.products.push(productInfo)
-              console.log('productite sa ', this.products.length);
             })
           }
         } else{
@@ -48,7 +46,6 @@ export class OrderProductsComponent implements OnInit {
       .subscribe((data) => {
         this.orderService.myProductsIds = this.emptyProductIds
         this.orderService.initialOrderId = data['name']
-        console.log('productite v koli4kata sa ', this.orderService.myProductsIds);
         this.toastr.success("Order submited ! \nWe'll conctact you soon!", 'Success');
         this.router.navigate(['/product/list']);
       })

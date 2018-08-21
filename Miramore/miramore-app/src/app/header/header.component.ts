@@ -34,7 +34,6 @@ export class HeaderComponent implements OnInit {
   myCredantials(){
     this.orderService.getMyOrder()
       .subscribe(data => {
-        console.log('all orders =',data);
       })
     
   }

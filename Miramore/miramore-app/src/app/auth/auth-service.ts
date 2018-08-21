@@ -34,7 +34,6 @@ export class AuthService {
                     .then(() => {
                         this.makeEmptyOrder()
                         .subscribe(data => {
-                            console.log('initial emptyu order =', data);
                             this.initialOrderId = data["name"]
                             this.orderService.initialOrderId = data['name']
                             this.router.navigate(['/product/list']);
@@ -95,13 +94,7 @@ export class AuthService {
     }
 
     getMyCredentials() {
-        console.log('pokazvam emaila', this.user['email']);
-        console.log('this.initialOrderId = ', this.initialOrderId);
-        // this.orderService.getMyOrder(this.user['email'])
-        //     .subscribe(data => {
-
-        //       console.log(data);
-        //     })
+     
     }
 
     isAuthenticated(): boolean {
