@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   product : ProductList;
   id : string;
   order : OrderCreate
-  orderIds : string[] = []
+  productIds : string[] = []
   constructor(
     private productService : ProductService,
     private orderService : OrderService,
@@ -45,14 +45,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   purchase(){
-    this.orderIds = this.orderService.myProductsIds
-    this.orderIds.push(this.id)
-//    console.log("this.orderIds =",this.orderIds);
-    this.order = new OrderCreate(this.authService.getUserEmail(), this.orderIds)
-    console.log("this order", this.order);
+    this.productIds = this.orderService.myProductsIds
+    this.productIds.push(this.id)
+    this.order = new OrderCreate(this.authService.getUserEmail(), this.productIds)
     this.orderService.buyProduct(this.order)
       .subscribe(response => {
-        console.log('res sled buyproduct =',response);
         this.orderService.myProductsIds = response['productIds']
         this.toastr.success('Product added to cart!', 'Success');
         this.router.navigate(['/product/list']);

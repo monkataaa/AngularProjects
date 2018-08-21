@@ -13,41 +13,46 @@ import { OrderCreate } from '../products/models/order-create';
 
 export class AuthService {
     token: string
-    userEmail : string
-    userCurrentOrder : string
-    user : {}
-    emptyOrder : OrderCreate
-    initialOrderId : string
+    userEmail: string
+    userCurrentOrder: string
+    user: {}
+    emptyOrder: OrderCreate
+    initialOrderId: string
     constructor(
         private toastr: ToastrService,
         private router: Router,
-        private orderService : OrderService,
-        
+        private orderService: OrderService,
+
     ) { }
 
     login(body: SignInModel) {
-               firebase.auth().signInWithEmailAndPassword(body["email"], body["password"])
+        firebase.auth().signInWithEmailAndPassword(body["email"], body["password"])
             .then(data => {
                 this.user = firebase.auth().currentUser
                 firebase.auth().currentUser.getIdToken()
-                  .then((token : string) => {this.token = token})
-                  .then(()=> {
-                    this.emptyOrder = new OrderCreate(this.user['email'], [])
-                    this.orderService.createInitialOrder(this.emptyOrder)
-                      .subscribe(data => {
-                          console.log('initial emptyu order =',data);
-                          this.initialOrderId = data["name"]
-                          this.orderService.initialOrderId = data['name']
-                          this.router.navigate(['/product/list']);
-                          this.toastr.success('Logged In', 'Success');
-                      })
-                  })
-               
-            
-              })
+                    .then((token: string) => { this.token = token })
+                    .then(() => {
+                        this.makeEmptyOrder()
+                        .subscribe(data => {
+                            console.log('initial emptyu order =', data);
+                            this.initialOrderId = data["name"]
+                            this.orderService.initialOrderId = data['name']
+                            this.router.navigate(['/product/list']);
+                            this.toastr.success('Logged In', 'Success');
+                        })
+                    })
+
+
+            })
             .catch(err => {
                 this.toastr.error(err.message, 'Warning');
             })
+    }
+
+    makeEmptyOrder() {
+        this.emptyOrder = new OrderCreate(this.user['email'], [])
+        return this.orderService.createInitialOrder(this.emptyOrder)
+            
     }
 
     register(body: SignUpModel) {
@@ -78,20 +83,20 @@ export class AuthService {
             })
         return this.token;
     }
-    getUserEmail(){
+    getUserEmail() {
         return this.userEmail = firebase.auth().currentUser.email
     }
 
-    isAdmin(){
+    isAdmin() {
         if (this.user['email'] == "moni@abv.bg") {
             return true
         }
         return false
     }
 
-    getMyCredentials(){
+    getMyCredentials() {
         console.log('pokazvam emaila', this.user['email']);
-        console.log('this.initialOrderId = ',this.initialOrderId);
+        console.log('this.initialOrderId = ', this.initialOrderId);
         // this.orderService.getMyOrder(this.user['email'])
         //     .subscribe(data => {
 
