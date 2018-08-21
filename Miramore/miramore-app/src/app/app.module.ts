@@ -6,30 +6,19 @@ import {FormsModule} from '@angular/forms'
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http"
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CatalogComponent } from './catalog/catalog/catalog.component';
-import { ProductDetailsComponent } from './products/product-details/product-details.component';
-import { ProductCreateComponent } from './products/product-create/product-create.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
-import { ProductListComponent } from './products/product-list/product-list.component';
-import { ProductEditComponent } from './products/product-edit/product-edit.component';
-import { OrderProductsComponent } from './orders/order-products/order-products.component';
+import { AuthModule } from './auth/auth.module';
+import { ProductModule } from './products/product.module';
+import { OrderModule } from './orders/order.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     HeaderComponent,
     CatalogComponent,
-    ProductDetailsComponent,
-    ProductCreateComponent,
-    ProductListComponent,
-    ProductEditComponent,
-    OrderProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +26,10 @@ import { OrderProductsComponent } from './orders/order-products/order-products.c
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule,
+    ProductModule,
+    OrderModule
     
   ],
   providers: [{
