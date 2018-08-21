@@ -1,27 +1,24 @@
-# MiramoreApp
+# MiramoreApp Online Shop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This project is a basic single page application built with Angular as a Front-End framework and Firebase as a Back-End . 
 
-## Development server
+Its core features include:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+user creation;
+user roles(basic and administrator);
+creating new products;
+editing and deleting existing products;
+buying products;
+making orders;
 
-## Code scaffolding
+## Idea
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The main project idea is to provide online product shopping. The administrator has the opportunity easily to create new products and to upload them on the server. Registered users can purchase the products and submit orders, which will be handled from the administrator later.
+## Built with
 
-## Build
+Angular 6 - JavaScript Front-End Framework
+Bootstrap v4.0.0-alpha.6 - HTML/CSS Framework
+NPM - Node Package Manager
+## To run the project
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
